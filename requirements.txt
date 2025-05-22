@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+python-multipart
+sqlalchemy
+psycopg2-binary
+python-dotenv
+pgvector
+httpx
+pydantic
+python-docx
+python-pptx
+pdfminer.six
+openai
+markdown-it-py
+mdurl
