@@ -82,7 +82,7 @@ python app/init_db.py
 ### 4️⃣ 启动后端服务
 
 ```bash
-uvicorn app.main:app --host localhost --port 8000 --reload
+uvicorn app.main:app --host localhost --port 8002 --reload
 ```
 
 ### 5️⃣ 启动前端服务
