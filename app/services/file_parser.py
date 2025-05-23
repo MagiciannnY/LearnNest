@@ -8,7 +8,7 @@ from pdfminer.high_level import extract_text as extract_pdf_text
 from docx import Document
 from pptx import Presentation
 
-def extract_text_from_file(file_path: Path, file_type: Literal["txt", "pdf", "docx", "pptx", "md"]) -> str:
+def extract_text_from_file(file_path: Path, file_type: Literal["txt", "pdf", "docx", "pptx", "md", "ppt", "doc"]) -> str:
     match file_type:
         case "txt" | "md":
             return file_path.read_text(encoding="utf-8")

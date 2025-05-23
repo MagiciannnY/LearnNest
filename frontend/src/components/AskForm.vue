@@ -77,7 +77,7 @@
       <div class="w-full flex justify-center">
         <form
           @submit.prevent="askQuestion"
-          class="max-w-[640px] w-full mx-auto bg-gray-100 rounded-[24px] m-4 px-4 py-3 flex items-end gap-2 shadow-md border border-gray-300"
+          class="max-w-[640px] w-full mx-auto bg-white rounded-[24px] m-4 px-4 py-3 flex items-end gap-2 shadow-md border border-gray-300"
         >
         <textarea
           v-model="question"

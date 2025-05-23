@@ -40,7 +40,7 @@ async def ask_question(request: Request):
             SELECT file_name, chunk_text 
             FROM knowledge_chunks
             ORDER BY embedding <-> :embedding
-            LIMIT 5
+            LIMIT 7
         """).bindparams(bindparam("embedding", type_=Vector(4096)))
         result = db.execute(query, {"embedding": embedding}).fetchall()
         context_chunks = [f"所属文件: 【{row[0]}】\n ---\n {row[1]}"  for row in result]

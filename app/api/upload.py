@@ -17,8 +17,10 @@ nlp = spacy.load("zh_core_web_sm")
 
 router = APIRouter()
 
-# 每个文本块最大字符数（可按需调整）
-CHUNK_SIZE = 300
+# 每个文本块最大字符数
+CHUNK_SIZE = 500
+# 每批嵌入的最大文本块数
+BATCH_SIZE = 32
 
 def smart_chunk_by_sentence(text: str, max_chars: int = CHUNK_SIZE) -> list[str]:
     doc = nlp(text)
@@ -73,7 +75,7 @@ async def upload_files(files: List[UploadFile] = File(...)):
     results = []
     for file in files:
         ext = Path(file.filename).suffix.lower()
-        allowed_exts = {".txt", ".md", ".pdf", ".doc", ".docx", ".pptx", "ppt"}
+        allowed_exts = {".txt", ".md", ".pdf", ".doc", ".docx", ".pptx", ".ppt"}
         if ext not in allowed_exts:
             results.append({"file": file.filename, "status": "❌ 不支持的文件类型"})
             continue
@@ -94,7 +96,11 @@ async def upload_files(files: List[UploadFile] = File(...)):
             results.append({"file": file.filename, "status": "[Logging]文件内容为空或无有效段落，已跳过"})
             continue
 
-        embeddings = await get_embeddings(chunks)
+        embeddings = []
+        for i in range(0, len(chunks), BATCH_SIZE):
+            batch = chunks[i:i + BATCH_SIZE]
+            batch_embeddings = await get_embeddings(batch)
+            embeddings.extend(batch_embeddings)
         # embeddings = reduce_embeddings_dim(embeddings)  # 如启用降维，解注释
         insert_chunks_with_add_all(file, chunks, embeddings)
 

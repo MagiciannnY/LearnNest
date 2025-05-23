@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-screen bg-gray-50 text-gray-800 font-sans overflow-hidden">
+  <div class="w-screen h-screen bg-gray-50 text-gray-800 font-sans">
     <header class="fixed top-0 left-0 right-0 h-12 bg-white border-b border-gray-200 flex items-center px-4 z-50 shadow-sm">
       <button
         @click="isCollapsed = !isCollapsed"
@@ -21,7 +21,7 @@
       </button>
       <h1 class="ml-4 text-lg font-semibold text-gray-700">{{ computedTitle }}</h1>
     </header>
-    <div class="flex h-full w-full overflow-hidden pt-12">
+    <div class="flex h-full w-full pt-12">
 
       <!-- 左侧菜单栏 -->
       <aside
@@ -32,7 +32,7 @@
           <li>
             <button
               @click="showUploaderModal = true"
-              class="text-left px-3 py-3 rounded-xl hover:bg-gray-200 transition-colors duration-300 flex items-center gap-2 block w-[200px] h-11 overflow-hidden"
+              class="relative text-left px-3 py-3 rounded-xl hover:bg-gray-200 transition-colors duration-300 flex items-center gap-2 block w-[200px] h-11"
             >
             <svg t="1747816469575" class="icon w-5 h-5" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8765" width="200" height="200"><path d="M895.8 592.1a32.2 32.1 0 1 0 64.4 0 32.2 32.1 0 1 0-64.4 0Z" fill="#515151" p-id="8766"></path><path d="M928 687.9c-17.8 0-32.2 14.4-32.2 32.1v80.7c0 35.3-28.7 64-64 64H192.5c-35.3 0-64-28.7-64-64V225c0-35.3 28.7-64 64-64H415l82.7 143.3c6.6 11.4 19.2 17.2 31.5 15.8h302.5c35.3 0 64 28.7 64 64v80c0 17.7 14.4 32.1 32.2 32.1s32.2-14.4 32.2-32.1c0-0.8 0-1.6-0.1-2.4v-77.5C960 329 925.1 282 876.1 264v-1c0-68.2-55.8-124-124-124H476.2l-14.8-25.7c-7.4-12.9-18-16.2-27.3-16l-0.1-0.1H192.1c-70.7 0-128 57.3-128 128v574.1c0 70.7 57.3 128 128 128h640c70.7 0 128-57.3 128-128v-76.9c0.1-0.8 0.1-1.6 0.1-2.4 0-17.7-14.4-32.1-32.2-32.1zM747.1 202.8c31.6 0 58 23.2 63.1 53.4H543.9l-30.8-53.4h234z" fill="#515151" p-id="8767"></path></svg>
               <span
@@ -44,7 +44,7 @@
           <li>
             <button
               @click="openWiki"
-              class="text-left px-3 py-3 rounded-xl hover:bg-gray-200 transition-colors duration-300 flex items-center gap-2 block w-[200px] h-11 overflow-hidden"
+              class="relative text-left px-3 py-3 rounded-xl hover:bg-gray-200 transition-colors duration-300 flex items-center gap-2 block w-[200px] h-11"
             >
               <svg t="1747884613653" class="icon w-5 h-5" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2638" width="200" height="200"><path d="M733.866667 797.013333H290.133333c-37.546667 0-68.266667-30.72-68.266666-68.266666V414.72c0-37.546667 30.72-68.266667 68.266666-68.266667h443.733334c37.546667 0 68.266667 30.72 68.266666 68.266667v314.026667c0 39.253333-30.72 68.266667-68.266666 68.266666z" fill="#333333" opacity=".3" p-id="2639"></path><path d="M512 965.973333h-5.12L126.293333 890.88C73.386667 882.346667 34.133333 834.56 34.133333 781.653333V170.666667c0-34.133333 15.36-64.853333 40.96-87.04 25.6-22.186667 59.733333-30.72 93.866667-23.893334L358.4 95.573333c13.653333 3.413333 22.186667 15.36 20.48 30.72-3.413333 13.653333-15.36 22.186667-30.72 20.48L158.72 110.933333c-18.773333-3.413333-35.84 1.706667-51.2 13.653334C93.866667 134.826667 85.333333 151.893333 85.333333 170.666667v609.28c0 29.013333 20.48 54.613333 49.493334 59.733333l382.293333 73.386667c13.653333 3.413333 22.186667 15.36 20.48 30.72-3.413333 13.653333-13.653333 22.186667-25.6 22.186666z" fill="#333333" p-id="2640"></path><path d="M512 965.973333c-11.946667 0-22.186667-8.533333-25.6-20.48-3.413333-13.653333 6.826667-27.306667 20.48-30.72l382.293333-73.386666c29.013333-5.12 49.493333-30.72 49.493334-59.733334V170.666667c0-18.773333-8.533333-35.84-22.186667-47.786667-13.653333-11.946667-32.426667-17.066667-51.2-13.653333L552.96 170.666667c-8.533333 1.706667-15.36 8.533333-15.36 17.066666v503.466667c0 13.653333-11.946667 25.6-25.6 25.6s-25.6-11.946667-25.6-25.6V189.44c0-32.426667 23.893333-61.44 56.32-68.266667l314.026667-59.733333c32.426667-6.826667 66.56 1.706667 93.866666 23.893333 23.893333 20.48 39.253333 51.2 39.253334 85.333334v609.28c0 54.613333-39.253333 100.693333-92.16 110.933333l-382.293334 73.386667c0 1.706667-1.706667 1.706667-3.413333 1.706666z" fill="#333333" p-id="2641"></path><path d="M650.24 392.533333c-11.946667 0-22.186667-8.533333-25.6-20.48-3.413333-13.653333 5.12-27.306667 20.48-30.72l177.493333-37.546666c13.653333-3.413333 27.306667 5.12 30.72 20.48 3.413333 13.653333-5.12 27.306667-20.48 30.72L655.36 392.533333h-5.12zM650.24 556.373333c-11.946667 0-22.186667-8.533333-25.6-20.48-3.413333-13.653333 5.12-27.306667 20.48-30.72l177.493333-37.546666c13.653333-3.413333 27.306667 5.12 30.72 20.48s-5.12 27.306667-20.48 30.72l-177.493333 37.546666h-5.12z" fill="#333333" p-id="2642"></path><path d="M373.76 392.533333h-5.12l-177.493333-37.546666c-13.653333-3.413333-22.186667-17.066667-20.48-30.72s17.066667-22.186667 30.72-20.48L378.88 341.333333c13.653333 3.413333 22.186667 17.066667 20.48 30.72-3.413333 13.653333-13.653333 20.48-25.6 20.48zM373.76 556.373333h-5.12l-177.493333-37.546666c-13.653333-3.413333-22.186667-17.066667-20.48-30.72 3.413333-13.653333 17.066667-22.186667 30.72-20.48l177.493333 37.546666c13.653333 3.413333 22.186667 17.066667 20.48 30.72-3.413333 11.946667-13.653333 20.48-25.6 20.48z" fill="#333333" p-id="2643"></path></svg>
               <span
@@ -60,19 +60,50 @@
             <li v-for="(item, index) in historyItems" :key="index">
               <button
                 :class="[
-                  'text-left px-3 py-3 rounded-xl transition-colors duration-300 flex items-center gap-2 block w-[200px] h-11 overflow-hidden',
+                  'group relative text-left px-3 py-3 rounded-xl transition-colors duration-300 flex items-center gap-2 block w-[220px] h-11',
                   (item.session_id === currentSessionId && showAskForm === 2) ? 'bg-gray-300' : 'hover:bg-gray-200'
                 ]"
                 :data-session-id="item.session_id"
                 :data-created-at="item.created_at"
                 @click="loadSession(item.session_id)"
               >
-                <span
-                  class="transition-all duration-300 origin-left"
+                <div
+                  class="relative grow overflow-hidden whitespace-nowrap text-sm text-left transition-all duration-300 origin-left max-w-[220px]"
                   :class="isCollapsed ? 'scale-x-0 opacity-0' : 'scale-x-100 opacity-100'"
+                  :title="item.title"
                 >
-                  {{ item.title }}
-                </span>
+                  <div class="overflow-hidden text-ellipsis pr-4">
+                    {{ item.title }}
+                  </div>
+                  <div
+                    :class="[
+                      (item.session_id === currentSessionId && showAskForm === 2)
+                        ? 'bg-gray-300'
+                        : 'bg-gray-100 group-hover:bg-gray-200',
+                      'absolute top-0 right-0 w-1 h-full transition-colors duration-300 pointer-events-none'
+                    ]"
+                    style="mask-image: linear-gradient(to left, black, transparent); -webkit-mask-image: linear-gradient(to left, black, transparent);"
+                  ></div>
+                </div>
+                <div class="relative ml-auto group">
+                  <button @click.stop="toggleItemMenu(index, $event)" class="p-1 hover:bg-gray-200 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-md">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M3 12C3 10.8954 3.89543 10 5 10C6.10457 10 7 10.8954 7 12C7 13.1046 6.10457 14 5 14C3.89543 14 3 13.1046 3 12ZM10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12ZM17 12C17 10.8954 17.8954 10 19 10C20.1046 10 21 10.8954 21 12C21 13.1046 20.1046 14 19 14C17.8954 14 17 13.1046 17 12Z" fill="currentColor"></path>
+                    </svg>
+                  </button>
+                </div>
+                <teleport to="body">
+                  <div
+                    v-if="openMenuIndex === index"
+                    :style="{ top: menuPosition.top + 'px', left: menuPosition.left + 'px' }"
+                    class="fixed w-28 bg-white shadow-lg rounded-md z-[1000] origin-top-left animate-scale-in"
+                  >
+                    <ul class="text-sm text-gray-700">
+                      <li @click="renameSession(item)" class="px-3 py-2 hover:bg-gray-100 cursor-pointer">重命名</li>
+                      <li @click="deleteSession(item)" class="px-3 py-2 hover:bg-gray-100 cursor-pointer">删除</li>
+                    </ul>
+                  </div>
+                </teleport>
               </button>
             </li>
           </ul>
@@ -80,7 +111,7 @@
       </aside>
 
       <!-- 右侧主内容区域 -->
-      <main class="flex-1 flex flex-col justify-between bg-white overflow-hidden">
+      <main class="flex-1 flex flex-col justify-between bg-white">
         <div class="flex-1 overflow-y-auto p-6">
           <Wiki v-if="showWiki" />
           <AskForm
@@ -128,14 +159,75 @@ const currentSessionId = ref('')
 const currentSessionHistory = ref([])
 const currentSessionTitle = ref('')
 
+
 const computedTitle = computed(() => {
   if (showWiki.value) return '知识库管理'
   if (showAskForm.value === 1) return '新的聊天'
   if (showAskForm.value === 2) {
     return currentSessionTitle.value?.trim() || '加载中...'
   }
-  return 'GaussDB 智能助手'
+  return 'LearnNest'
 })
+
+// --- BEGIN 历史记录操作逻辑 ---
+const openMenuIndex = ref(null)
+const menuPosition = ref({ top: 0, left: 0 })
+
+function toggleItemMenu(index, event) {
+  if (openMenuIndex.value === index) {
+    openMenuIndex.value = null
+    return
+  }
+
+  const rect = event.currentTarget.getBoundingClientRect()
+  menuPosition.value = {
+    top: rect.bottom + window.scrollY,
+    left: rect.left + window.scrollX + 5
+  }
+
+  openMenuIndex.value = index
+}
+
+async function renameSession(item) {
+  openMenuIndex.value = null
+  const newTitle = prompt("请输入新的标题", item.title)
+  if (!newTitle || newTitle.trim() === item.title) return
+
+  try {
+    await axios.post("http://localhost:8002/history/rename", {
+      session_id: item.session_id,
+      new_title: newTitle.trim()
+    })
+
+    // 更新前端标题
+    const target = historyItems.value.find(i => i.session_id === item.session_id)
+    if (target) target.title = newTitle.trim()
+
+    // 如果当前展示的是该会话，则也更新页面标题
+    if (currentSessionId.value === item.session_id) {
+      currentSessionTitle.value = newTitle.trim()
+    }
+  } catch (error) {
+    console.error('重命名失败:', error)
+  }
+}
+
+async function deleteSession(item) {
+  openMenuIndex.value = null
+  try {
+    await axios.delete(`http://localhost:8002/history/delete/${item.session_id}`)
+    // 移除前端历史记录项
+    historyItems.value = historyItems.value.filter(i => i.session_id !== item.session_id)
+    // 如果当前显示的是被删除项，重置状态
+    if (currentSessionId.value === item.session_id) {
+      startNewChat()
+    }
+  } catch (error) {
+    console.error('删除失败:', error)
+  }
+}
+
+// --- END 历史记录操作逻辑 ---
 
 onMounted(async () => {
   try {
@@ -147,6 +239,7 @@ onMounted(async () => {
 })
 
 function startNewChat() {
+  if (showAskForm.value === 1) return
   showAskForm.value = 1
   showWiki.value = false
   currentSessionId.value = ''
@@ -188,6 +281,7 @@ async function loadSession(sessionId) {
     console.error('加载会话内容失败:', error)
   }
 }
+
 function handleNewSession(newSession) {
   historyItems.value.unshift(newSession)
   currentSessionId.value = newSession.session_id
@@ -195,7 +289,9 @@ function handleNewSession(newSession) {
   loadSession(newSession.session_id)
   showAskForm.value = 2
 }
+
 </script>
+
 
 <style scoped>
 ::-webkit-scrollbar {
@@ -205,5 +301,20 @@ function handleNewSession(newSession) {
 ::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 3px;
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.15s ease-out forwards;
 }
 </style>

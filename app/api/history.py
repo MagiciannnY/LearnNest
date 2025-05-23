@@ -64,21 +64,21 @@ def save_message(data: SaveMessageRequest):
         db.close()
 
 
-# 获取指定用户所有历史会话（分组返回标题和时间）
-@router.get("/list/{user_id}")
-def get_user_history(user_id: str):
-    db = SessionLocal()
-    try:
-        sessions = (
-            db.query(HistoryRecord.session_id, HistoryRecord.title, HistoryRecord.created_at)
-            .filter(HistoryRecord.user_id == user_id)
-            .group_by(HistoryRecord.session_id, HistoryRecord.title, HistoryRecord.created_at)
-            .order_by(HistoryRecord.created_at.desc())
-            .all()
-        )
-        return {"history": [{"session_id": s[0], "title": s[1], "created_at": s[2]} for s in sessions]}
-    finally:
-        db.close()
+# # 获取指定用户所有历史会话（分组返回标题和时间）
+# @router.get("/list/{user_id}")
+# def get_user_history(user_id: str):
+#     db = SessionLocal()
+#     try:
+#         sessions = (
+#             db.query(HistoryRecord.session_id, HistoryRecord.title, HistoryRecord.created_at)
+#             .filter(HistoryRecord.user_id == user_id)
+#             .group_by(HistoryRecord.session_id, HistoryRecord.title, HistoryRecord.created_at)
+#             .order_by(HistoryRecord.created_at.desc())
+#             .all()
+#         )
+#         return {"history": [{"session_id": s[0], "title": s[1], "created_at": s[2]} for s in sessions]}
+#     finally:
+#         db.close()
 
 # 删除某个会话的所有记录
 @router.delete("/delete/{session_id}")
